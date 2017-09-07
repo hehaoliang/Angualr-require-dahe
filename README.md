@@ -1,2 +1,2 @@
-# Angualr-require-dahe
-angular的框架
+# Angular-Require
+Angular require demand.
