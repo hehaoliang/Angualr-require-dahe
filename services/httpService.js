@@ -1,6 +1,6 @@
 define([
 
-], function () {
+], function() {
     "use strict";
 
     var subRegRex = /\{\s*([^\|\}]+?)\s*(?:\|([^\}]*))?\s*\}/g;
@@ -9,16 +9,16 @@ define([
      * Restful 参数过滤
      * 如：/api/kkk/{id} 
      */
-    var sub = function (target, option) {
-        return ((target.replace) ? target.replace(subRegRex, function (match, key) {
+    var sub = function(target, option) {
+        return ((target.replace) ? target.replace(subRegRex, function(match, key) {
             return (!angular.isUndefined(option[key])) ? option[key] : match;
         }) : target);
     };
 
     var TIME_OUT = 10 * 60 * 1000;
 
-    var service = function ($q) {
-        this.get = function (option) {
+    var service = function($q) {
+        this.get = function(option) {
             var deferred = $q.defer();
             var url = !angular.isString(option.url) ? sub(option.url.target, option.url.option) : option.url;
             var $ajax = $.ajax({
@@ -29,7 +29,8 @@ define([
                 "data": option.params || {},
                 "async": option.async || true,
                 "headers": {},
-                "beforeSend": function (request, setting) {
+                "beforeSend": function(request, setting) {
+                    // request是beforesend的参数 ajax自带的参数  setting不知道是什么鬼
                     if (option.headers) {
                         for (var key in option.headers) {
                             if (option.headers.hasOwnProperty(key)) {
@@ -40,13 +41,15 @@ define([
                     }
                     option.beforeSend && option.beforeSend(request, setting);
                 },
-                "complete": function () {
+                "complete": function() {
+                    // 这里放调用完成后的逻辑 比如完成后让遮罩消失
 
                 }
             });
-            $ajax.success(function () {
+            // success方法可以放到ajax里面去
+            $ajax.success(function() {
                 deferred.resolve.apply(deferred, arguments);
-            }).error(function () {
+            }).error(function() {
                 if (arguments[0].status == 403) {
                     return history.go(0);
                 }
@@ -54,7 +57,7 @@ define([
             });
             return deferred.promise;
         };
-        this.post = function (option) {
+        this.post = function(option) {
             var deferred = $q.defer();
             var url = !angular.isString(option.url) ? sub(option.url.target, option.url.option) : option.url;
             var $ajax = $.ajax({
@@ -67,7 +70,7 @@ define([
                 "headers": {},
                 "dataType": "json",
                 "processData": false,
-                "beforeSend": function (request, setting) {
+                "beforeSend": function(request, setting) {
                     if (option.headers) {
                         for (var key in option.headers) {
                             if (option.headers.hasOwnProperty(key)) {
@@ -78,13 +81,13 @@ define([
                     }
                     option.beforeSend && option.beforeSend(request, setting);
                 },
-                "complete": function () {
+                "complete": function() {
 
                 }
             });
-            $ajax.success(function () {
+            $ajax.success(function() {
                 deferred.resolve.apply(deferred, arguments);
-            }).error(function () {
+            }).error(function() {
                 if (arguments[0].status == 403) {
                     return history.go(0);
                 }
@@ -92,7 +95,7 @@ define([
             });
             return deferred.promise;
         };
-        this.put = function (option) {
+        this.put = function(option) {
             var deferred = $q.defer();
             var url = !angular.isString(option.url) ? sub(option.url.target, option.url.option) : option.url;
             var $ajax = $.ajax({
@@ -103,7 +106,7 @@ define([
                 "data": option.params || {},
                 "async": option.async || true,
                 "headers": {},
-                "beforeSend": function (request, setting) {
+                "beforeSend": function(request, setting) {
                     if (option.headers) {
                         for (var key in option.headers) {
                             if (option.headers.hasOwnProperty(key)) {
@@ -114,13 +117,13 @@ define([
                     }
                     option.beforeSend && option.beforeSend(request, setting);
                 },
-                "complete": function () {
+                "complete": function() {
 
                 }
             });
-            $ajax.success(function () {
+            $ajax.success(function() {
                 deferred.resolve.apply(deferred, arguments);
-            }).error(function () {
+            }).error(function() {
                 if (arguments[0].status == 403) {
                     return history.go(0);
                 }
@@ -128,7 +131,7 @@ define([
             });
             return deferred.promise;
         };
-        this.deleter = function (option) {
+        this.deleter = function(option) {
             var deferred = $q.defer();
             var url = !angular.isString(option.url) ? sub(option.url.target, option.url.option) : option.url;
             var $ajax = $.ajax({
@@ -139,7 +142,7 @@ define([
                 "data": option.params || {},
                 "async": option.async || true,
                 "headers": {},
-                "beforeSend": function (request, setting) {
+                "beforeSend": function(request, setting) {
                     if (option.headers) {
                         for (var key in option.headers) {
                             if (option.headers.hasOwnProperty(key)) {
@@ -150,13 +153,13 @@ define([
                     }
                     option.beforeSend && option.beforeSend(request, setting);
                 },
-                "complete": function () {
+                "complete": function() {
 
                 }
             });
-            $ajax.success(function () {
+            $ajax.success(function() {
                 deferred.resolve.apply(deferred, arguments);
-            }).error(function () {
+            }).error(function() {
                 if (arguments[0].status == 403) {
                     return history.go(0);
                 }

@@ -1,6 +1,6 @@
 define([
     "routers/demo"
-], function () {
+], function() {
     "use strict";
 
     var configList = arguments;
@@ -9,9 +9,9 @@ define([
         state: "default",
         url: "",
         templateUrl: "views/demo/router1.html",
-        controllers:["controllers/demo/router1Controller"],
-        services:["services/demo/demoService"],
-        styleSheets:["themes/default/css/demo/demo.css"]
+        controllers: ["controllers/demo/router1Controller"],
+        services: ["services/demo/demoService"],
+        styleSheets: ["themes/default/css/demo/demo.css"]
     }];
 
     for (var index = 0; index < configList.length; index++) {

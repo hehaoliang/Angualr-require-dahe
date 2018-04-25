@@ -1,9 +1,9 @@
-define([], function () {
+define([], function() {
     "use strict";
 
-    var ctrl = ["$scope", "demoService", function ($scope, demoService) {
+    var ctrl = ["$scope", "demoService", function($scope, demoService) {
         $scope.fn = {
-            onRenderFinish: function () {
+            onRenderFinish: function() {
                 $scope.demo.update();
             }
         };
@@ -12,9 +12,9 @@ define([], function () {
             data: {
                 value: 0
             },
-            update: function () {
+            update: function() {
                 var demo = this;
-                demoService.getData().then(function (result) {
+                demoService.getData().then(function(result) {
                     demo.data = result;
                 });
             }

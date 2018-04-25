@@ -1,23 +1,26 @@
 define([
 
-], function () {
+], function() {
     "use strict";
 
-    var ctrl = ["$scope", "$state", "indexService", function ($scope, $state, indexService) {
-        window.onresize = function () {
+    var ctrl = ["$scope", "$state", "indexService", function($scope, $state, indexService) {
+        window.onresize = function() {
             window.location.reload();
         };
 
-        $scope.$on('$stateChangeStart', function (event, toState) {
+        $scope.$on('$stateChangeStart', function(event, toState) {
             // event.preventDefault();
             $scope.navigation.setSelected(toState.name);
         });
 
         $scope.fn = {
-            onRenderFinish: function () {
-                
+            onRenderFinish: function() {
+
             }
         }
+
+        $scope.test = "dahe";
+
 
         $scope.navigation = {
             current: 1,
@@ -25,13 +28,13 @@ define([
                 { id: 1, name: "router1", state: "router1", title: "Router 1" },
                 { id: 2, name: "router2", state: "router2", title: "Router 2" }
             ],
-            onClick: function (nav) {
+            onClick: function(nav) {
                 this.current = nav.id;
                 $state.go(nav.state);
             },
-            setSelected: function (state) {
+            setSelected: function(state) {
                 var navigation = this;
-                var navList = navigation.data.filter(function (element) {
+                var navList = navigation.data.filter(function(element) {
                     return element.state == state;
                 });
 

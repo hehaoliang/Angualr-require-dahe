@@ -1,9 +1,9 @@
 define([
 
-], function () {
+], function() {
     "use strict";
 
-    var config = function () {
+    var config = function() {
         // API 地址 Host
         var host = "http://" + window.location.host;
 

@@ -2,3 +2,28 @@
  .content {
      width: 100%;
  }
+ 
+ .tree_group {
+     width: 500px;
+     height: 800px;
+     border: 1px solid rgb(224, 50, 7);
+ }
+ 
+ .tree-view li,
+ .check-box {
+     cursor: pointer;
+ }
+ 
+ .icon {
+     height: 12px;
+     width: 12px;
+     display: inline-block;
+ }
+ 
+ .bgColorGreen {
+     background: green;
+ }
+ 
+ .bgColorYellow {
+     background: yellowgreen;
+ }

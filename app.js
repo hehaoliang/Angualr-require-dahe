@@ -8,7 +8,7 @@ define([
     "services/httpService",
     "services/fakeHttpService",
     "services/index/indexService"
-], function (
+], function(
     angular,
     router,
     directiveConfig,
@@ -19,23 +19,22 @@ define([
     fakeHttpService,
     indexService
 ) {
-        "use strict";
-        var dependency = [
-            "ng",
-            "ui.router"
-        ];
+    "use strict";
+    var dependency = [
+        "ng",
+        "ui.router"
+    ];
 
-        var app = angular.module("myApp", dependency);
-        app.controller("indexCtrl", indexController);
-        app.service("config", configService);
-        app.service("webApi", httpService);
-        app.service("fakeApi", fakeHttpService);
-        app.service("indexService", indexService);
+    var app = angular.module("myApp", dependency);
+    app.controller("indexCtrl", indexController);
+    app.service("config", configService);
+    app.service("webApi", httpService);
+    app.service("fakeApi", fakeHttpService);
+    app.service("indexService", indexService);
 
-        directiveConfig(app);
+    directiveConfig(app);
 
-        appConfig(app);
+    appConfig(app);
 
-        return app;
-    }
-);
+    return app;
+});

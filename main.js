@@ -33,8 +33,8 @@ require.config({
 
 require([
     "app"
-], function (app) {
-    angular.element(document).ready(function () {
+], function(app) {
+    angular.element(document).ready(function() {
         angular.bootstrap(window.document, [app.name]);
     });
 });

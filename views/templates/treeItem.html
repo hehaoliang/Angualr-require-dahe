@@ -1,0 +1,15 @@
+<!-- <i ng-click="itemExpended(item, $event);" class="{{getItemIcon(item)}}"></i> -->
+<i class="{{getItemIcon(item)}}"></i>
+<!-- 单选框 -->
+<input type="checkbox" ng-model="item.$$isChecked" class="check-box" ng-if="item[valueChildren]" ng-change="warpCallback('itemCheckedChanged', item, $event)">
+
+<!-- 单选框后面的值 -->
+<span class='text-field' ng-click="warpCallback('itemClicked', item, $event);">{{item[textField]}}</span>
+
+
+<!-- 是否有下一级 -->
+<!-- 下面两个ul都可以 带ng-show的不会容易想到 -->
+<!-- <ul ng-if="!isLeaf(item)" ng-show="item.$$isExpend"> -->
+<ul ng-if="!isLeaf(item)&&item.$$isExpend">
+    <li ng-repeat="item in item.children" ng-include="'views/templates/treeItem.html'"></li>
+</ul>

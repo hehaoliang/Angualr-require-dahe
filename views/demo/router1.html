@@ -1,4 +1,15 @@
 <div ng-controller="router1Ctrl" ng-render-finish="fn.onRenderFinish()">
     <span>Router 1:</span>
     <span ng-bind="demo.data.value"></span>
+    <span>我是路由1</span>
+
+
+    <div class="tree_group">
+
+        <tree-view tree-data="vm.tree" text-field="name" value-field='id' value-children="children" item-clicked="vm.itemClicked($item)" item-checked-changed="vm.itemCheckedChanged($item)" can-checked="vm.canChecked"></tree-view>
+
+
+    </div>
+
+
 </div>
